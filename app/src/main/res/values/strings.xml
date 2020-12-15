@@ -2,4 +2,19 @@
     <string name="app_name">Android-animation-poc</string>
     <string name="bitmap_animation">Bitmap animation</string>
     <string name="visibility_animation">Visibility animation</string>
+    <string name="deseja_deletar">Deseja Deletar ?</string>
+    <string name="delete">Deletar</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="cats">gatos</string>
+    <string name="feed">feed</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="about_cats">About cats.</string>
+    <string name="sub_title_home">Curiosities and customs about cats ...</string>
+    <string name="tread_title">Tread Title</string>
+    <string name="tread_sub_title_home">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="lorem_text">     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="list">list</string>
 </resources>

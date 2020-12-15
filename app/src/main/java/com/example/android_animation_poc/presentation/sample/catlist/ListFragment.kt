@@ -1,4 +1,4 @@
-package com.example.android_animation_poc.presentation.visibility
+package com.example.android_animation_poc.presentation.sample.catlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,23 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_animation_poc.R
-import com.example.android_animation_poc.databinding.FragmentVisibilityBinding
+import com.example.android_animation_poc.databinding.FragmentCatListBinding
 import org.koin.android.ext.android.inject
 
-class VisibilityAnimationFragment : Fragment() {
+class ListFragment : Fragment() {
 
-    private val viewModel by inject<VisibilityAnimationViewModel>()
-    private lateinit var viewBinding: FragmentVisibilityBinding
+    private val viewModel by inject<ListViewModel>()
+    private lateinit var viewBinding: FragmentCatListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewBinding = FragmentVisibilityBinding.inflate(inflater, container, false)
+        viewBinding = FragmentCatListBinding.inflate(inflater, container, false)
 
         with(viewBinding) {
 
@@ -30,6 +31,20 @@ class VisibilityAnimationFragment : Fragment() {
 
             listCat.layoutManager = LinearLayoutManager(requireContext())
             listCat.adapter = adapter
+
+            val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                    DialogDeleteFragment(
+                        { adapter.removeAt(viewHolder.adapterPosition) },
+                        { adapter.removeAt(viewHolder.adapterPosition) }
+                    ).show(requireActivity().supportFragmentManager, "deleteDialog")
+
+                }
+            }
+
+            val itemTouchHelper = ItemTouchHelper(swipeHandler)
+            itemTouchHelper.attachToRecyclerView(listCat)
 
             refreshLayout.setOnRefreshListener {
                 runLayoutAnimation(listCat)

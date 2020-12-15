@@ -1,10 +1,11 @@
-package com.example.android_animation_poc.presentation.visibility
+package com.example.android_animation_poc.presentation.sample.catlist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.android_animation_poc.presentation.sample.dto.Cat
 
-class VisibilityAnimationViewModel : ViewModel() {
+class ListViewModel : ViewModel() {
 
     private val _allItem = MutableLiveData<List<Cat>>()
     val allItem: LiveData<List<Cat>> get() = _allItem

@@ -1,17 +1,21 @@
 package com.example.android_animation_poc.di
 
-import com.example.android_animation_poc.data.RetrofitConfig
-import com.example.android_animation_poc.presentation.visibility.VisibilityAnimationViewModel
+import com.example.android_animation_poc.presentation.sample.cathome.HomeViewModel
+import com.example.android_animation_poc.presentation.sample.catlist.ListViewModel
+import com.example.android_animation_poc.presentation.sample.catprofile.ProfileViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
 
-    single {
-        RetrofitConfig.getInstance()
+    viewModel {
+        ListViewModel()
+    }
+    viewModel {
+        HomeViewModel()
     }
 
     viewModel {
-        VisibilityAnimationViewModel()
+        ProfileViewModel()
     }
 }

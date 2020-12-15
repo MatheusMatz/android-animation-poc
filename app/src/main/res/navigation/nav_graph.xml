@@ -29,9 +29,9 @@
     </fragment>
     <fragment
         android:id="@+id/visibilityAnimationFragment"
-        android:name="com.example.android_animation_poc.presentation.visibility.VisibilityAnimationFragment"
+        android:name="com.example.android_animation_poc.presentation.sample.catlist.ListFragment"
         android:label="VisibilityAnimationFragment"
-        tools:layout="@layout/fragment_visibility">
+        tools:layout="@layout/fragment_cat_list">
         <action
             android:id="@+id/action_visibilityAnimationFragment_to_optionFragment"
             app:destination="@id/optionFragment" />

@@ -1,4 +1,4 @@
-package com.example.android_animation_poc.presentation.visibility
+package com.example.android_animation_poc.presentation.sample.dto
 
 data class Cat(
     val image: String,
