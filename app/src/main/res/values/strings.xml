@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android-animation-poc</string>
+    <string name="bitmap_animation">Bitmap animation</string>
+    <string name="visibility_animation">Visibility animation</string>
 </resources>
