@@ -14,7 +14,9 @@
         android:theme="@style/Theme.Androidanimationpoc">
         <activity
             android:name=".presentation.sample.SampleActivity"
-            android:label="@string/title_activity_main2"></activity>
+            android:label="@string/title_activity_main2"/>
+        <activity android:name=".presentation.sample.cathome.ItemInfoActivity"/>
+        <activity android:name=".AnimationPocActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

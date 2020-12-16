@@ -11,22 +11,10 @@
         android:label="OptionFragment"
         tools:layout="@layout/fragment_option">
         <action
-            android:id="@+id/action_optionFragment_to_bitmapsAnimationFragment"
-            app:destination="@id/bitmapsAnimationFragment" />
-        <action
             android:id="@+id/action_optionFragment_to_visibilityAnimationFragment"
             app:destination="@id/visibilityAnimationFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/bitmapsAnimationFragment"
-        android:name="com.example.android_animation_poc.presentation.bitmaps.BitmapsAnimationFragment"
-        android:label="BitmapsAnimationFragment"
-        tools:layout="@layout/fragment_bitmaps_animation">
-        <action
-            android:id="@+id/action_bitmapsAnimationFragment_to_optionFragment"
-            app:destination="@id/optionFragment" />
-    </fragment>
     <fragment
         android:id="@+id/visibilityAnimationFragment"
         android:name="com.example.android_animation_poc.presentation.sample.catlist.ListFragment"

@@ -13,7 +13,8 @@ class HomeViewModel : ViewModel() {
 
     fun loadingItems() {
         val data = listOf(
-            Curiosity(true,
+            Curiosity(
+                true,
                 "https://welovecatsandkittens.com/wp-content/uploads/2015/10/weird-2.jpg",
                 "Text 1",
                 listOf(""),
@@ -27,6 +28,30 @@ class HomeViewModel : ViewModel() {
                 listOf("")
             ),
             Curiosity(
+                false,
+                "https://th.bing.com/th/id/OIP.LJY238h437MjfghNdqkSfQHaJJ?o=6&pid=Api&rs=1",
+                "Text 1",
+                listOf(""),
+                listOf("")
+            ), Curiosity(
+                false,
+                "https://th.bing.com/th/id/OIP.LJY238h437MjfghNdqkSfQHaJJ?o=6&pid=Api&rs=1",
+                "Text 1",
+                listOf(""),
+                listOf("")
+            ), Curiosity(
+                false,
+                "https://th.bing.com/th/id/OIP.LJY238h437MjfghNdqkSfQHaJJ?o=6&pid=Api&rs=1",
+                "Text 1",
+                listOf(""),
+                listOf("")
+            ), Curiosity(
+                false,
+                "https://th.bing.com/th/id/OIP.LJY238h437MjfghNdqkSfQHaJJ?o=6&pid=Api&rs=1",
+                "Text 1",
+                listOf(""),
+                listOf("")
+            ), Curiosity(
                 false,
                 "https://th.bing.com/th/id/OIP.LJY238h437MjfghNdqkSfQHaJJ?o=6&pid=Api&rs=1",
                 "Text 1",

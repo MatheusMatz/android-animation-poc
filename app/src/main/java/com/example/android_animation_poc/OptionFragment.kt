@@ -28,8 +28,7 @@ class OptionFragment : Fragment() {
 
         with(binding) {
             btnBitmap.setOnClickListener {
-                Navigation.findNavController(binding.root)
-                    .navigate(R.id.action_optionFragment_to_bitmapsAnimationFragment)
+                startActivity(Intent(requireActivity(), AnimationPocActivity::class.java))
             }
 
             btnVisibility.setOnClickListener {

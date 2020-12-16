@@ -1,14 +1,20 @@
 package com.example.android_animation_poc.presentation.sample.cathome
 
+import android.app.Activity
+import android.app.ActivityOptions
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.android_animation_poc.databinding.ItemPrincipalBinding
 import com.example.android_animation_poc.databinding.ItemSecondaryBinding
 import com.example.android_animation_poc.presentation.sample.dto.Curiosity
+import android.util.Pair as UtilPair
 
-class GridAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
+class GridAdapter(private val clickListener: (() -> Unit)) :
+    RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     companion object {
         const val TYPE_PRINCIPAL = 0
@@ -37,8 +43,8 @@ class GridAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
         when (holder) {
-            is PrincipalViewHolder -> holder.bind(curiosities[position])
-            is SecondaryViewHolder -> holder.bind(curiosities[position])
+            is PrincipalViewHolder -> holder.bind(curiosities[position], clickListener)
+            is SecondaryViewHolder -> holder.bind(curiosities[position], clickListener)
         }
     }
 
@@ -60,10 +66,26 @@ class GridAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
 class PrincipalViewHolder(private val viewBinding: ItemPrincipalBinding) :
     BaseViewHolder<Curiosity>(viewBinding.root) {
 
-    override fun bind(curiosity: Curiosity) {
+    override fun bind(curiosity: Curiosity, clickListener: (() -> Unit)) {
+
+        val intent = Intent(
+            viewBinding.imagePrincipal.context,
+            ItemInfoActivity::class.java
+        ).putExtra("INFO", curiosity)
+
+        viewBinding.imagePrincipal.setOnClickListener {
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                it.context as Activity,
+                UtilPair.create(viewBinding.imagePrincipal, "image"),
+                UtilPair.create(viewBinding.curiSPrincipal, "title")
+            )
+
+            it.context.startActivity(intent, options.toBundle())
+            clickListener()
+        }
         viewBinding.curiSPrincipal.text = curiosity.title
         viewBinding.imagePrincipal.load(curiosity.image) {
-            crossfade(true)
+
         }
     }
 }
@@ -71,10 +93,26 @@ class PrincipalViewHolder(private val viewBinding: ItemPrincipalBinding) :
 class SecondaryViewHolder(private val viewBinding: ItemSecondaryBinding) :
     BaseViewHolder<Curiosity>(viewBinding.root) {
 
-    override fun bind(curiosity: Curiosity) {
+    override fun bind(curiosity: Curiosity, clickListener: (() -> Unit)) {
         viewBinding.curiSecun.text = curiosity.title
         viewBinding.imageSecund.load(curiosity.image) {
             crossfade(true)
+        }
+
+        val intent = Intent(
+            viewBinding.imageSecund.context,
+            ItemInfoActivity::class.java
+        ).putExtra("INFO", curiosity)
+
+        viewBinding.imageSecund.setOnClickListener {
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                it.context as Activity,
+                UtilPair.create(viewBinding.imageSecund, "image"),
+                UtilPair.create(viewBinding.curiSecun, "title")
+            )
+
+            it.context.startActivity(intent, options.toBundle())
+            clickListener()
         }
     }
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.HorizontalScrollView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -36,11 +37,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(viewBinding) {
-            val gridAdapter = GridAdapter()
-            val gridLayoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.HORIZONTAL, false)
+            val gridAdapter = GridAdapter { makeTransiction() }
+            val gridLayoutManager =
+                GridLayoutManager(requireContext(), 2, GridLayoutManager.HORIZONTAL, false)
             gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
-                    return when(gridAdapter.getItemViewType(position)) {
+                    return when (gridAdapter.getItemViewType(position)) {
                         GridAdapter.TYPE_PRINCIPAL -> 2
                         GridAdapter.TYPE_SECONDARY -> 1
                         else -> -1
@@ -51,11 +53,19 @@ class HomeFragment : Fragment() {
             homeGrid.adapter = gridAdapter
             homeGrid.layoutManager = gridLayoutManager
 
-                viewModel.allItem.observe(viewLifecycleOwner, {
-                    gridAdapter.setItems(it)
-                })
+            viewModel.allItem.observe(viewLifecycleOwner, {
+                gridAdapter.setItems(it)
+            })
 
             viewModel.loadingItems()
         }
+    }
+
+    private fun makeTransiction() {
+//        Toast.makeText(requireContext(), "Teste", Toast.LENGTH_LONG).show()
+//        requireActivity().supportFragmentManager
+//            .beginTransaction()
+//            .setReorderingAllowed(true)
+////            .addSharedElement()
     }
 }
